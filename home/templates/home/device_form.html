@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Today is {{today}}</p>
+
+<form action="{% url 'device.new' %}" method='POST'>{% csrf_token %}
+    {{ form }}
+    <button type="submit">Add</button>
+</form>
+<ul>
+    {% for device in devices %}
+    <li class="device-li">{{device.name}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
